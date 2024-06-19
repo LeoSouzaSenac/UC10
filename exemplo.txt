@@ -1,2 +1,0 @@
-exemplo de arquivo para demonstrar o Pull
-escrevi uma nova linha!
