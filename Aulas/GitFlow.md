@@ -548,13 +548,211 @@ hotfixes ←─── corrigem a main e a develop simultaneamente
 
 ---
 
-## 🧪 Atividade sugerida para os alunos
+Claro! Abaixo está um exercício completo e didático para ensinar seus alunos a usarem o **Gitflow**, partindo da criação de um repositório local até a simulação de desenvolvimento com branches:
 
-1. Inicie um repositório com `main` e `develop`
-2. Crie uma `feature/login-usuario`
-3. Faça alterações e envie para `develop`
-4. Crie uma `release/v1.0` e finalize
-5. Crie um `hotfix/bug-senha` a partir da `main`
+---
+
+## 🧪 Exercício: Trabalhando com Gitflow em um Projeto Web
+
+### 🎯 Objetivo
+
+Ensinar como utilizar o **Gitflow** em um projeto real. Os alunos vão:
+
+* Criar um repositório local.
+* Subir o repositório para o GitHub.
+* Iniciar o fluxo Gitflow com `develop`, `feature`, `release` e `main`.
+* Simular etapas do desenvolvimento de uma aplicação simples.
+
+---
+
+### 📦 Pré-requisitos
+
+* Git instalado.
+* Conta no GitHub.
+* Visual Studio Code ou outro editor.
+* Terminal Git Bash ou nativo do SO.
+
+---
+
+### 🚀 Etapas do Exercício
+
+#### 1. 📁 Criação do Projeto
+
+1. Abra o terminal e crie uma pasta para o projeto:
+
+```bash
+mkdir projeto-gitflow
+cd projeto-gitflow
+```
+
+2. Crie um arquivo inicial `index.html` com o conteúdo abaixo:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Meu Projeto Gitflow</title>
+</head>
+<body>
+  <h1>Bem-vindo ao Projeto com Gitflow!</h1>
+</body>
+</html>
+```
+
+3. Inicialize um repositório Git:
+
+```bash
+git init
+```
+
+4. Faça o primeiro commit na branch `main`:
+
+```bash
+git add .
+git commit -m "chore: commit inicial com index.html"
+```
+
+---
+
+#### 2. ☁️ Criar o Repositório no GitHub
+
+1. Acesse [https://github.com](https://github.com) e crie um novo repositório **sem README** com o nome `projeto-gitflow`.
+
+2. Conecte o repositório local ao GitHub:
+
+```bash
+git remote add origin https://github.com/SEU_USUARIO/projeto-gitflow.git
+```
+
+3. Suba o código:
+
+```bash
+git branch -M main
+git push -u origin main
+```
+
+---
+
+#### 3. 🌱 Iniciando o Gitflow Manualmente
+
+1. Crie a branch `develop` a partir da `main`:
+
+```bash
+git checkout -b develop
+git push -u origin develop
+```
+
+---
+
+#### 4. 🧩 Criando uma `feature`
+
+Vamos adicionar um botão ao site:
+
+1. Crie uma nova branch de feature:
+
+```bash
+git checkout -b feature/botao-contato
+```
+
+2. Edite o `index.html` e adicione:
+
+```html
+<button>Contrato</button>
+```
+
+3. Faça o commit da feature:
+
+```bash
+git add .
+git commit -m "feat: adiciona botão de contato"
+```
+
+4. Faça o push da branch:
+
+```bash
+git push -u origin feature/botao-contato
+```
+
+5. Abra um **Pull Request** da feature no GitHub, apontando para a `develop`.
+
+6. Faça o **merge** no GitHub.
+
+7. No terminal, atualize sua branch local `develop`:
+
+```bash
+git checkout develop
+git pull origin develop
+```
+
+---
+
+#### 5. 📦 Criando uma `release`
+
+1. Crie uma nova branch de release:
+
+```bash
+git checkout -b release/v1.0.0
+```
+
+2. Altere o título da página no `index.html` para:
+
+```html
+<title>Projeto Gitflow v1.0.0</title>
+```
+
+3. Commit e push:
+
+```bash
+git add .
+git commit -m "chore: prepara versão 1.0.0"
+git push -u origin release/v1.0.0
+```
+
+4. Crie o **Pull Request** da `release/v1.0.0` para a `main` no GitHub e faça o merge.
+
+5. Em seguida, faça o **merge da release na develop** também.
+
+6. No terminal:
+
+```bash
+git checkout main
+git pull origin main
+
+git checkout develop
+git pull origin develop
+```
+
+---
+
+#### 6. 🐞 Criando uma `hotfix`
+
+Imagine que o botão está com um erro de digitação.
+
+1. Crie uma branch de hotfix a partir da main:
+
+```bash
+git checkout main
+git checkout -b hotfix/corrige-botao
+```
+
+2. Corrija o botão no `index.html` (por exemplo, corrigir o texto para "Fale Conosco").
+
+3. Commit e push:
+
+```bash
+git add .
+git commit -m "fix: corrige texto do botão de contato"
+git push -u origin hotfix/corrige-botao
+```
+
+4. Faça o Pull Request para `main` e depois para `develop`.
+
+
+
+### 💡 Dica para os Alunos
+
+> Você pode instalar a extensão **Git Graph** ou **GitLens** no VS Code para visualizar os branches e commits de forma mais intuitiva.
 
 ---
 
