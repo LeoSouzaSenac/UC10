@@ -1,7 +1,3 @@
-Claro! Vou reescrever o `.md` com uma linguagem mais simples e didática, explicando os termos técnicos para facilitar o entendimento dos alunos:
-
----
-
 # Semântica em Commits — Como Escrever Mensagens de Commit Claras
 
 ## O que é “semântica em commits”?
