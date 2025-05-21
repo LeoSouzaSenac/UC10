@@ -209,6 +209,29 @@ Sem uma licença explícita, **por padrão seu projeto não pode ser usado legal
 
 ---
 
+## 🧱 O que colocar na documentação?
+
+### ✅ O principal arquivo: `README.md`
+
+Esse é o “cartão de visita” do seu projeto. O ideal é que ele tenha:
+
+| Seção                 | O que escrever                                            |
+| --------------------- | --------------------------------------------------------- |
+| 📌 Nome e descrição   | O que é o projeto e para que ele serve.                   |
+| 🚀 Instalação         | Como instalar o projeto no computador.                    |
+| 🛠️ Como usar         | Comandos ou instruções para rodar o projeto.              |
+| 📋 Requisitos         | O que precisa estar instalado (Node.js, Python, etc.).    |
+| 📦 Tecnologias        | Quais linguagens, frameworks ou bibliotecas foram usadas. |
+| 👨‍💻 Como contribuir | Regras ou passos para quem quiser ajudar no código.       |
+| 🧪 Testes             | Como testar o projeto, se houver testes automatizados.    |
+| 🔐 Licença            | Qual licença o projeto usa (MIT, GPL, etc.).              |
+| 🙋‍♂️ Autor/créditos  | Quem fez o projeto ou links para contato.                 |
+
+---
+
+
+
+
 ## 📚 Exercício
 
 1. Crie um repositório chamado `projeto-documentado`.
