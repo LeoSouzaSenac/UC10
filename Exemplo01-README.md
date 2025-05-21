@@ -40,6 +40,12 @@ Exemplos de como usar o projeto após a instalação. Isso pode incluir comandos
 node script.js
 ```
 
+```javascript
+function lalala(palavra) {
+  console.log(palavra)
+}
+```
+
 ## Configuração (opcional)
 
 Informações sobre como configurar o projeto, se houver opções configuráveis.
