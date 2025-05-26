@@ -2,7 +2,7 @@
 
 ## 📌 O que é Integração Contínua (CI)?
 
-A **Integração Contínua** (em inglês, *Continuous Integration* ou **CI**) é uma **prática de desenvolvimento de software** onde o código produzido pelos desenvolvedores é **integrado ao repositório principal com frequência** (várias vezes ao dia).
+A **Integração Contínua** (em inglês, *Continuous Integration* ou **CI**) é uma **prática de desenvolvimento de software** onde o código produzido pelos desenvolvedores é **integrado ao repositório principal com frequência** (várias vezes ao dia). Essa prática é amplamente utilizada no dia a dia das empresas — especialmente em times profissionais de desenvolvimento de software. Ela é considerada uma boa prática essencial e fundamental na rotina de desenvolvimento de software profissional, tanto em empresas grandes quanto em startups. Utilizá-la corretamente reduz erros, melhora a qualidade do código e aumenta a velocidade de entrega de novos recursos aos clientes.
 
 Cada vez que o código é enviado (push), o projeto passa automaticamente por **verificações automáticas**, como:
 
