@@ -40,6 +40,17 @@ O **GitHub Actions** é a ferramenta de CI/CD do próprio GitHub. Ela permite cr
 
 ---
 
+## ⚙️ O que dá para fazer com o GitHub Actions?
+
+O **GitHub Actions** é a ferramenta de CI/CD do próprio GitHub. Ela permite criar **workflows automatizados** para executar tarefas sempre que algo acontece no repositório, como:
+
+- Testes Automatizados: Executar testes toda vez que alguém faz um push, abre uma pull request, faz merge em uma branch.
+- Builds Automáticos: Compilar, empacotar ou transformar seu código automaticamente.
+- Deploy automático: Publicar seu site ou app automaticamente quando você faz push na branch main.
+- Agendamento por data/hora (cron).
+
+---
+
 ## 🏗️ Estrutura do GitHub Actions
 
 Um workflow (fluxo de trabalho) do GitHub Actions é um arquivo `.yml` que fica no seguinte caminho:
@@ -141,35 +152,7 @@ Executa um **comando de terminal**, como se estivesse digitando no terminal do c
 
 ---
 
-## 🧪 E se meu projeto for só HTML/CSS?
 
-Você pode ainda usar o GitHub Actions para:
-
-* Verificar se arquivos estão corretos;
-* Fazer deploy automático no GitHub Pages;
-* Rodar validadores de HTML/CSS;
-
-Exemplo de CI simples com verificação de HTML:
-
-```yaml
-name: Validação HTML
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  validate-html:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Instalar htmlhint
-        run: npm install -g htmlhint
-      - name: Rodar htmlhint
-        run: htmlhint ./index.html
-```
-
----
 
 ## ✅ Conclusão
 
@@ -182,11 +165,173 @@ jobs:
 
 ## 🧑‍💻 Exercício Proposto
 
-1. Crie um repositório no GitHub com um projeto básico (HTML, JS ou Node).
-2. Crie a pasta `.github/workflows/` e adicione um arquivo `ci.yml`.
-3. Copie o exemplo de CI com GitHub Actions.
-4. Faça um commit e veja a execução automática na aba **Actions** do GitHub.
-5. Analise cada passo e modifique o workflow para aprender mais.
+# Passo a passo: Criar repositório + site + CI para publicar no GitHub Pages
+
+---
+
+## 1. Criar um repositório no GitHub
+
+1. Acesse [github.com](https://github.com) e faça login.
+2. Clique no botão **New** (novo repositório).
+3. Defina:
+
+   * Nome do repositório: `meu-site-exemplo` (ou outro nome que quiser)
+   * Visibilidade: Público (pode ser privado também, mas Pages funcionam melhor público)
+4. Marque a opção para criar um README (opcional)
+5. Clique em **Create repository**
+
+---
+
+## 2. Clonar o repositório no seu computador
+
+No terminal, rode:
+
+```bash
+git clone https://github.com/<seu-usuario>/meu-site-exemplo.git
+cd meu-site-exemplo
+```
+
+(Substitua `<seu-usuario>` pelo seu usuário do GitHub)
+
+---
+
+## 3. Criar os arquivos do site
+
+Dentro da pasta do projeto, crie a pasta `docs`:
+
+```bash
+mkdir docs
+```
+
+Crie o arquivo `index.html` dentro da pasta `docs`:
+
+`docs/index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meu Site Exemplo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Olá, mundo!</h1>
+  <p>Este é um site publicado com GitHub Pages e GitHub Actions.</p>
+</body>
+</html>
+```
+
+Crie o arquivo `style.css` dentro da pasta `docs`:
+
+`docs/style.css`:
+
+```css
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  color: #0078d7;
+}
+```
+
+---
+
+## 4. Commitar e enviar para o GitHub
+
+```bash
+git add docs/index.html docs/style.css
+git commit -m "Adiciona site estático na pasta docs"
+git push origin main
+```
+
+---
+
+## 5. Criar o workflow do GitHub Actions
+
+Crie a pasta para workflows:
+
+```bash
+mkdir -p .github/workflows
+```
+
+Crie o arquivo `.github/workflows/deploy.yml` com o conteúdo:
+
+```yml
+name: Deploy GitHub Pages
+# Nome do workflow, que aparece na aba "Actions" do GitHub.
+# Aqui diz que é o fluxo para fazer o deploy (publicação) no GitHub Pages.
+
+on:
+  push:
+    branches:
+      - main
+# Define o gatilho para rodar esse workflow:
+# Sempre que houver um "push" (envio de código) na branch "main",
+# o workflow será executado automaticamente.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Define o "job" chamado "deploy".
+    # O job vai rodar em um ambiente virtual (runner) com sistema operacional Ubuntu na última versão disponível.
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v4
+    # Primeiro passo: baixa o código do repositório para o ambiente do runner.
+    # Isso permite que os comandos seguintes acessem o código atualizado enviado.
+
+    - name: Publicar no GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
+    # Segundo passo: usa uma ação pronta chamada "actions-gh-pages" para publicar os arquivos no GitHub Pages.
+    # github_token é uma variável secreta automática que permite à ação fazer alterações no repositório (criar branch gh-pages).
+    # publish_dir especifica qual pasta será publicada — no caso, a pasta "docs".
+
+```
+
+---
+
+## 6. Commitar e enviar o workflow
+
+```bash
+git add .github/workflows/deploy.yml
+git commit -m "Adiciona workflow para deploy no GitHub Pages"
+git push origin main
+```
+
+---
+
+## 7. Configurar o GitHub Pages no repositório
+
+1. Vá no seu repositório no GitHub.
+2. Clique em **Settings** (Configurações).
+3. No menu lateral, clique em **Pages**.
+4. Em **Source**, escolha:
+
+   * Branch: `gh-pages`
+   * Folder: `/ (root)`
+5. Clique em **Save**.
+
+---
+
+## 8. Testar
+
+* Aguarde alguns minutos após o push do workflow.
+* Seu site estará disponível em:
+
+```
+https://<seu-usuario>.github.io/meu-site-exemplo/
+
 
 ---
 
