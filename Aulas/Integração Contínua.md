@@ -49,7 +49,9 @@ Um workflow (fluxo de trabalho) do GitHub Actions é um arquivo `.yml` que fica 
 .github/workflows/nome-do-arquivo.yml
 
 ````
-
+O .yml ou .yaml é um arquivo de texto simples usado para organizar dados em formato hierárquico, de forma clara e legível.
+YAML significa *YAML Ain't Markup Language* (YAML não é uma linguagem de marcação).
+É muito utilizado para configurações de sistemas e automação
 Esse arquivo define:
 
 - **Quando o fluxo será executado** (gatilhos);
