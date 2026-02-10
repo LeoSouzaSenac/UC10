@@ -1,21 +1,4 @@
-perfeito 👍
-aqui está o **MD atualizado**, com exatamente o que você pediu:
 
-* ❌ **removida a seção de Resolução de Conflitos**
-* ❌ **removida a seção de Tags**
-* 🔧 **ajustada a descrição do `git fetch`** para ficar tecnicamente correta
-* 📐 numeração reordenada
-
-Pode substituir o arquivo inteiro por este ⬇️
-
----
-
-````md
-# Git & GitHub — Fluxo Básico e Comandos Essenciais
-
-Este documento descreve o fluxo básico de trabalho com **Git** e **GitHub**, explicando **o que cada comando faz exatamente** e quando usar.
-
----
 
 ## 1. Conceitos Básicos
 
